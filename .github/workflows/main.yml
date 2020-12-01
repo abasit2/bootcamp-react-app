@@ -1,29 +1,29 @@
-# This is a basic workflow to help you get started with Actions
-name: Application deployment using Surge.sh
+name: Application on Surge.sh
+
 on:
   push:
-    branches: [ main ]
-    
+    branches:
+      - main
+
 jobs:
   build:
+    name: Deploy_Surge
     runs-on: ubuntu-latest
     steps:
-      - name: Setup Node.js environment
-      uses: actions/setup-node@v2.1.2
-   node-version: 12
-    -name: Install Yarn 
-  uses: Borales/actions-yarn@v2.3.0
-  with:
-    # Yarn command
-    cmd: install
-    -name: Creating build 
-  run: yarn build
-  
-  -name: installing surge 
-  run: npm install -g surge 
-   
-   - name:deploying on surge 
-   run: surge ./build bootcamp_practice_class2.surge.sh --token ${{secrets.SURGE_TOKEN2}}
-    
-    
-       
+      - name: Checkout Branch
+        uses: actions/checkout@v2
+      
+      - name: Node.JS Environment
+        uses: actions/setup-node@v1
+      
+      - name: Install Yarn
+        run: yarn install
+
+      - name: Build React App
+        run: yarn build
+
+      - name: Setup Surge
+        run:  npm install -g surge
+
+      - name: Deploy with surge
+        run:  surge ./build http://bootcamp_practice_class2.surge.sh/ --token ${{secrets.SURGE_TOKEN2}}

@@ -11,21 +11,20 @@ jobs:
     steps:
       - name: Setup Node.js environment
     uses: actions/setup-node@v2.1.2
-      node-version: 12
-      - name: Install Yarn 
-    uses: Borales/actions-yarn@v2.3.0
-    with:
+    node-version: 12
+    -name: Install Yarn 
+  uses: Borales/actions-yarn@v2.3.0
+  with:
     # Yarn command
     cmd: install
-    
-     - name: Creating build 
-      run: yarn build 
-    
-    - name: installing surge 
-      run: npm install -g surge 
-      
-    - name: deploying on surge 
-      run: surge ./build http://bootcamp_practice_class2.surge.sh// --token ${{secrets.SURGE_TOKEN2}}
+    -name: Creating build 
+  run: yarn build
+  
+  -name: installing surge 
+  run: npm install -g surge 
+   
+   - name:deploying on surge 
+   run: surge ./build http://bootcamp_practice_class2.surge.sh// --token ${{secrets.SURGE_TOKEN2}}
     
     
        

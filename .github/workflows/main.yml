@@ -10,16 +10,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Setup Node.js environment
-  uses: actions/setup-node@v2.1.2
-  node-version: 12
-    
-    - name: Get ready for Yarn Installation
-  uses: Borales/actions-yarn@v2.3.0
-  with:
+    uses: actions/setup-node@v2.1.2
+      node-version: 12
+      - name: Install Yarn 
+    uses: Borales/actions-yarn@v2.3.0
+    with:
     # Yarn command
     cmd: install
     
-    - name: Creating build 
+     - name: Creating build 
       run: yarn build 
     
     - name: installing surge 

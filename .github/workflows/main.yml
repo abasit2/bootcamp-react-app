@@ -13,7 +13,7 @@ jobs:
   uses: actions/setup-node@v2.1.2
   node-version: 12
     
-    - name: GitHub Action for Yarn 
+    - name: Get ready for Yarn Installation
   uses: Borales/actions-yarn@v2.3.0
   with:
     # Yarn command
